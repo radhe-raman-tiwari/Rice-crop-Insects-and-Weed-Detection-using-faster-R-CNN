@@ -1,0 +1,38 @@
+<annotation>
+	<folder>train</folder>
+	<filename>image_177.jpg</filename>
+	<path>C:\Users\Radhe Raman Tiwari\Pictures\image\train\image_177.jpg</path>
+	<source>
+		<database>Unknown</database>
+	</source>
+	<size>
+		<width>912</width>
+		<height>1024</height>
+		<depth>3</depth>
+	</size>
+	<segmented>0</segmented>
+	<object>
+		<name>Weed</name>
+		<pose>Unspecified</pose>
+		<truncated>1</truncated>
+		<difficult>0</difficult>
+		<bndbox>
+			<xmin>687</xmin>
+			<ymin>33</ymin>
+			<xmax>912</xmax>
+			<ymax>135</ymax>
+		</bndbox>
+	</object>
+	<object>
+		<name>Weed</name>
+		<pose>Unspecified</pose>
+		<truncated>0</truncated>
+		<difficult>0</difficult>
+		<bndbox>
+			<xmin>300</xmin>
+			<ymin>355</ymin>
+			<xmax>586</xmax>
+			<ymax>417</ymax>
+		</bndbox>
+	</object>
+</annotation>

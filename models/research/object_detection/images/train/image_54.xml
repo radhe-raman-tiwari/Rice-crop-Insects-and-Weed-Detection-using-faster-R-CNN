@@ -1,0 +1,38 @@
+<annotation>
+	<folder>train</folder>
+	<filename>image_54.jpg</filename>
+	<path>C:\Users\Radhe Raman Tiwari\Pictures\image\train\image_54.jpg</path>
+	<source>
+		<database>Unknown</database>
+	</source>
+	<size>
+		<width>912</width>
+		<height>1024</height>
+		<depth>3</depth>
+	</size>
+	<segmented>0</segmented>
+	<object>
+		<name>Weed</name>
+		<pose>Unspecified</pose>
+		<truncated>0</truncated>
+		<difficult>0</difficult>
+		<bndbox>
+			<xmin>5</xmin>
+			<ymin>11</ymin>
+			<xmax>119</xmax>
+			<ymax>255</ymax>
+		</bndbox>
+	</object>
+	<object>
+		<name>Weed</name>
+		<pose>Unspecified</pose>
+		<truncated>0</truncated>
+		<difficult>0</difficult>
+		<bndbox>
+			<xmin>258</xmin>
+			<ymin>353</ymin>
+			<xmax>563</xmax>
+			<ymax>497</ymax>
+		</bndbox>
+	</object>
+</annotation>

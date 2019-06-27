@@ -1,0 +1,26 @@
+<annotation>
+	<folder>test</folder>
+	<filename>image_209.jpg</filename>
+	<path>C:\Users\Radhe Raman Tiwari\Pictures\image\test\image_209.jpg</path>
+	<source>
+		<database>Unknown</database>
+	</source>
+	<size>
+		<width>912</width>
+		<height>1024</height>
+		<depth>3</depth>
+	</size>
+	<segmented>0</segmented>
+	<object>
+		<name>Weed</name>
+		<pose>Unspecified</pose>
+		<truncated>0</truncated>
+		<difficult>0</difficult>
+		<bndbox>
+			<xmin>559</xmin>
+			<ymin>189</ymin>
+			<xmax>725</xmax>
+			<ymax>353</ymax>
+		</bndbox>
+	</object>
+</annotation>

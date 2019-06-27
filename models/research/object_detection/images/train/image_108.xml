@@ -1,0 +1,38 @@
+<annotation>
+	<folder>train</folder>
+	<filename>image_108.jpg</filename>
+	<path>C:\Users\Radhe Raman Tiwari\Pictures\image\train\image_108.jpg</path>
+	<source>
+		<database>Unknown</database>
+	</source>
+	<size>
+		<width>912</width>
+		<height>1024</height>
+		<depth>3</depth>
+	</size>
+	<segmented>0</segmented>
+	<object>
+		<name>Weed</name>
+		<pose>Unspecified</pose>
+		<truncated>0</truncated>
+		<difficult>0</difficult>
+		<bndbox>
+			<xmin>36</xmin>
+			<ymin>605</ymin>
+			<xmax>563</xmax>
+			<ymax>846</ymax>
+		</bndbox>
+	</object>
+	<object>
+		<name>Weed</name>
+		<pose>Unspecified</pose>
+		<truncated>0</truncated>
+		<difficult>0</difficult>
+		<bndbox>
+			<xmin>14</xmin>
+			<ymin>519</ymin>
+			<xmax>291</xmax>
+			<ymax>1007</ymax>
+		</bndbox>
+	</object>
+</annotation>
