@@ -120,6 +120,23 @@ Once you have stepped all the way through the script, you should see real image 
   <img src="result/image_118.jpg">
 </p>
 
+
+#### 2e. Use of all the features of this project
+To use all features of this project, which is rice crop insect image detection and classification video detection and classification and webcam detection and classification, we need to follow following steps From the \object_detection directory.
+To use image detection and classification feature, issue this command :
+```
+(tensorflow) C:\models\research\object_detection> jupyter notebook image_detection.ipynb
+```
+To use video detection and classification feature, issue this command :
+```
+(tensorflow) C:\models\research\object_detection> jupyter notebook video_detection.ipynb
+```
+To use webcm detection and classification feature, issue this command :
+```
+(tensorflow) C:\models\research\object_detection> jupyter notebook camera_detection.ipynb
+```
+
+
 ### 3. Gather and Label Pictures
 Now that the TensorFlow Object Detection API is all set up and ready to go, we need to provide the images it will use to train a new detection classifier.
 
