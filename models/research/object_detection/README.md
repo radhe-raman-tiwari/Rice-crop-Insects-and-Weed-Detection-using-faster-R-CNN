@@ -12,7 +12,6 @@ This readme describes every step required to get going with your own object dete
 7. [Exporting the inference graph](https://github.com/radhe-raman-tiwari/Rice-crop-Insects-and-Weed-Detection-using-faster-R-CNN/tree/master/models/research/object_detection#7-export-inference-graph)
 8. [Testing and using your newly trained object detection classifier](https://github.com/radhe-raman-tiwari/Rice-crop-Insects-and-Weed-Detection-using-faster-R-CNN/tree/master/models/research/object_detection#8-use-your-newly-trained-object-detection-classifier)
 
-[Appendix: Common Errors](https://github.com/radhe-raman-tiwari/Rice-crop-Insects-and-Weed-Detection-using-faster-R-CNN/tree/master/models/research/object_detection#appendix-common-errors)
 
 It also has Python scripts to test your classifier out on an image, video, or webcam feed.
 
