@@ -46,75 +46,51 @@ This portion of the project goes over the full set up required. It is fairly met
 </p>
 
 
-
-#### 2c. Download this tutorial's repository from GitHub
-Download the full repository located on this page (scroll to the top and click Clone or Download) and extract all the contents directly into the C:\tensorflow1\models\research\object_detection directory. (You can overwrite the existing "README.md" file.) This establishes a specific directory structure that will be used for the rest of the tutorial. 
-
-At this point, here is what your \object_detection folder should look like:
-
-<p align="center">
-  <img src="doc/object_detection_directory.jpg">
-</p>
-
-This repository contains the images, annotation data, .csv files, and TFRecords needed to train a "Pinochle Deck" playing card detector. You can use these images and data to practice making your own Pinochle Card Detector. It also contains Python scripts that are used to generate the training data. It has scripts to test out the object detection classifier on images, videos, or a webcam feed. You can ignore the \doc folder and its files; they are just there to hold the images used for this readme.
-
-If you want to practice training your own "Pinochle Deck" card detector, you can leave all the files as they are. You can follow along with this tutorial to see how each of the files were generated, and then run the training. You will still need to generate the TFRecord files (train.record and test.record) as described in Step 4. 
-
-You can also download the frozen inference graph for my trained Pinochle Deck card detector [from this Dropbox link](https://www.dropbox.com/s/va9ob6wcucusse1/inference_graph.zip?dl=0) and extract the contents to \object_detection\inference_graph. This inference graph will work "out of the box". You can test it after all the setup instructions in Step 2a - 2f have been completed by running the Object_detection_image.py (or video or webcam) script.
-
 If you want to train your own object detector, delete the following files (do not delete the folders):
 - All files in \object_detection\images\train and \object_detection\images\test
 - The “test_labels.csv” and “train_labels.csv” files in \object_detection\images
 - All files in \object_detection\training
 -	All files in \object_detection\inference_graph
 
-Now, you are ready to start from scratch in training your own object detector. This tutorial will assume that all the files listed above were deleted, and will go on to explain how to generate the files for your own training dataset.
+Now, you are ready to start from scratch in training your own object detector. This project will assume that all the files listed above were deleted, and will go on to explain how to generate the files for your own training dataset.
 
-#### 2d. Set up new Anaconda virtual environment
+#### 2a. Set up new Anaconda virtual environment
 Next, we'll work on setting up a virtual environment in Anaconda for tensorflow-gpu. From the Start menu in Windows, search for the Anaconda Prompt utility, right click on it, and click “Run as Administrator”. If Windows asks you if you would like to allow it to make changes to your computer, click Yes.
 
-In the command terminal that pops up, create a new virtual environment called “tensorflow1” by issuing the following command:
+In the command terminal that pops up, create a new virtual environment called “tensorflow” by issuing the following command:
 ```
-C:\> conda create -n tensorflow1 pip python=3.5
+C:\> conda create -n tensorflow pip python=3.5
 ```
 Then, activate the environment by issuing:
 ```
-C:\> activate tensorflow1
+C:\> activate tensorflow
 ```
 Install tensorflow-gpu in this environment by issuing:
 ```
-(tensorflow1) C:\> pip install --ignore-installed --upgrade tensorflow-gpu
+(tensorflow) C:\> pip install --ignore-installed --upgrade tensorflow-gpu
 ```
 Install the other necessary packages by issuing the following commands:
 ```
-(tensorflow1) C:\> conda install -c anaconda protobuf
-(tensorflow1) C:\> pip install pillow
-(tensorflow1) C:\> pip install lxml
-(tensorflow1) C:\> pip install Cython
-(tensorflow1) C:\> pip install jupyter
-(tensorflow1) C:\> pip install matplotlib
-(tensorflow1) C:\> pip install pandas
-(tensorflow1) C:\> pip install opencv-python
+(tensorflow) C:\> conda install -c anaconda protobuf
+(tensorflow) C:\> pip install pillow
+(tensorflow) C:\> pip install lxml
+(tensorflow) C:\> pip install Cython
+(tensorflow) C:\> pip install jupyter
+(tensorflow) C:\> pip install matplotlib
+(tensorflow) C:\> pip install pandas
+(tensorflow) C:\> pip install opencv-python
 ```
 (Note: The ‘pandas’ and ‘opencv-python’ packages are not needed by TensorFlow, but they are used in the Python scripts to generate TFRecords and to work with images, videos, and webcam feeds.)
 
-#### 2e. Configure PYTHONPATH environment variable
+#### 2b Configure PYTHONPATH environment variable
 A PYTHONPATH variable must be created that points to the \models, \models\research, and \models\research\slim directories. Do this by issuing the following commands (from any directory):
 ```
-(tensorflow1) C:\> set PYTHONPATH=C:\tensorflow1\models;C:\tensorflow1\models\research;C:\tensorflow1\models\research\slim
+(tensorflow) C:\> set PYTHONPATH=C:\models;C:models\research;C:\models\research\slim
 ```
-(Note: Every time the "tensorflow1" virtual environment is exited, the PYTHONPATH variable is reset and needs to be set up again.)
+(Note: Every time the "tensorflow" virtual environment is exited, the PYTHONPATH variable is reset and needs to be set up again.)
 
 #### 2f. Compile Protobufs and run setup.py
-Next, compile the Protobuf files, which are used by TensorFlow to configure model and training parameters. Unfortunately, the short protoc compilation command posted on TensorFlow’s Object Detection API [installation page](https://github.com/tensorflow/models/blob/master/research/object_detection/g3doc/installation.md) does not work on Windows. Every  .proto file in the \object_detection\protos directory must be called out individually by the command.
 
-In the Anaconda Command Prompt, change directories to the \models\research directory and copy and paste the following command into the command line and press Enter:
-```
-protoc --python_out=. .\object_detection\protos\anchor_generator.proto .\object_detection\protos\argmax_matcher.proto .\object_detection\protos\bipartite_matcher.proto .\object_detection\protos\box_coder.proto .\object_detection\protos\box_predictor.proto .\object_detection\protos\eval.proto .\object_detection\protos\faster_rcnn.proto .\object_detection\protos\faster_rcnn_box_coder.proto .\object_detection\protos\grid_anchor_generator.proto .\object_detection\protos\hyperparams.proto .\object_detection\protos\image_resizer.proto .\object_detection\protos\input_reader.proto .\object_detection\protos\losses.proto .\object_detection\protos\matcher.proto .\object_detection\protos\mean_stddev_box_coder.proto .\object_detection\protos\model.proto .\object_detection\protos\optimizer.proto .\object_detection\protos\pipeline.proto .\object_detection\protos\post_processing.proto .\object_detection\protos\preprocessor.proto .\object_detection\protos\region_similarity_calculator.proto .\object_detection\protos\square_box_coder.proto .\object_detection\protos\ssd.proto .\object_detection\protos\ssd_anchor_generator.proto .\object_detection\protos\string_int_label_map.proto .\object_detection\protos\train.proto .\object_detection\protos\keypoint_box_coder.proto .\object_detection\protos\multiscale_anchor_generator.proto .\object_detection\protos\graph_rewriter.proto
-```
-This creates a name_pb2.py file from every name.proto file in the \object_detection\protos folder.
-
-**(Note: TensorFlow occassionally adds new .proto files to the \protos folder. If you get an error saying ImportError: cannot import name 'something_something_pb2' , you may need to update the protoc command to include the new .proto files.)**
 
 Finally, run the following commands from the C:\tensorflow1\models\research directory:
 ```
@@ -125,7 +101,7 @@ Finally, run the following commands from the C:\tensorflow1\models\research dire
 #### 2g. Test TensorFlow setup to verify it works
 The TensorFlow Object Detection API is now all set up to use pre-trained models for object detection, or to train a new one. You can test it out and verify your installation is working by launching the object_detection_tutorial.ipynb script with Jupyter. From the \object_detection directory, issue this command:
 ```
-(tensorflow1) C:\tensorflow1\models\research\object_detection> jupyter notebook object_detection_tutorial.ipynb
+(tensorflow) C:\models\research\object_detection> jupyter notebook object_detection_tutorial.ipynb
 ```
 This opens the script in your default web browser and allows you to step through the code one section at a time. You can step through each section by clicking the “Run” button in the upper toolbar. The section is done running when the “In [ * ]” text next to the section populates with a number (e.g. “In [1]”). 
 
