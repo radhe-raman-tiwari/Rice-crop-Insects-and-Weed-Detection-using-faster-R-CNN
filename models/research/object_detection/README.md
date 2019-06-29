@@ -89,19 +89,19 @@ A PYTHONPATH variable must be created that points to the \models, \models\resear
 ```
 (Note: Every time the "tensorflow" virtual environment is exited, the PYTHONPATH variable is reset and needs to be set up again.)
 
-#### 2f. Compile Protobufs and run setup.py
+#### 2c. Compile Protobufs and run setup.py
 
 
 Finally, run the following commands from the C:\models\research directory:
 ```
-(tensorflow1) C:\models\research> python setup.py build
-(tensorflow1) C:\models\research> python setup.py install
+(tensorflow) C:\models\research> python setup.py build
+(tensorflow) C:\models\research> python setup.py install
 ```
 
-#### 2g. Test TensorFlow setup to verify it works
+#### 2d. Test TensorFlow setup to verify it works
 The TensorFlow Object Detection API is now all set up to use pre-trained models for object detection, or to train a new one. You can test it out and verify your installation is working by launching the object_detection_tutorial.ipynb script with Jupyter. From the \object_detection directory, issue this command:
 ```
-(tensorflow) C:\models\research\object_detection> jupyter notebook object_detection_tutorial.ipynb
+(tensorflow) C:\models\research\object_detection> jupyter notebook image_detection.ipynb
 ```
 This opens the script in your default web browser and allows you to step through the code one section at a time. You can step through each section by clicking the “Run” button in the upper toolbar. The section is done running when the “In [ * ]” text next to the section populates with a number (e.g. “In [1]”). 
 
