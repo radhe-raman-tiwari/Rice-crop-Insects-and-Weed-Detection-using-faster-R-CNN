@@ -167,6 +167,11 @@ For this thesis project, We have taken fifteen(15) different type of rice crop i
 
 Make sure the images aren’t too large. They should be less than 200KB each, and their resolution shouldn’t be more than 800x600. The larger the images are, the longer it will take to train the classifier. You can use the transfer_image_resolution.py script in this repository to reduce the size of the images or reshape the images.
 
+To resize or reshape images dataset directory, issue this command :
+```
+(tensorflow) C:\models\research\object_detection> python transfer_image_resolution.py -d 'full-path-to-the-source-directory' -s width height
+```
+
 After you have all the pictures you need, move 20% of them to the \object_detection\images\test directory, and 80% of them to the \object_detection\images\train directory. Make sure there are a variety of pictures in both the \test and \train directories.
 
 #### 3b. Label Pictures
@@ -174,7 +179,7 @@ Here comes the fun part! With all the pictures gathered, it’s time to label th
 
 [LabelImg GitHub link](https://github.com/tzutalin/labelImg)
 
-[LabelImg download link](https://www.dropbox.com/s/tq7zfrcwl44vxan/windows_v1.6.0.zip?dl=1)
+[LabelImg download link](https://github.com/radhe-raman-tiwari/Rice-crop-Insects-and-Weed-Detection-using-faster-R-CNN/blob/master/models/research/object_detection/labelImg.exe)
 
 Download and install LabelImg, point it to your \images\train directory, and then draw a box around each object in each image. Repeat the process for all the images in the \images\test directory. This will take a while! 
 
@@ -187,36 +192,57 @@ LabelImg saves a .xml file containing the label data for each image. These .xml 
 Also, you can check if the size of each bounding box is correct by running sizeChecker.py
 
 ```
-(tensorflow1) C:\tensorflow1\models\research\object_detection> python sizeChecker.py --move
+(tensorflow) C:\models\research\object_detection> python sizeChecker.py --move
 ```
+(Note: This step isn't recommended no need to do this, try to skip this step this is just for checking.)
 
 ### 4. Generate Training Data
-With the images labeled, it’s time to generate the TFRecords that serve as input data to the TensorFlow training model. This tutorial uses the xml_to_csv.py and generate_tfrecord.py scripts from [Dat Tran’s Raccoon Detector dataset](https://github.com/datitran/raccoon_dataset), with some slight modifications to work with our directory structure.
+With the images labeled, it’s time to generate the TFRecords that serve as input data to the TensorFlow training model. This thesis uses the xml_to_csv.py and generate_tfrecord.py scripts from [Dat Tran’s Raccoon Detector dataset](https://github.com/datitran/raccoon_dataset), with some slight modifications to work with our directory structure.
 
 First, the image .xml data will be used to create .csv files containing all the data for the train and test images. From the \object_detection folder, issue the following command in the Anaconda command prompt:
 ```
-(tensorflow1) C:\tensorflow1\models\research\object_detection> python xml_to_csv.py
+(tensorflow) C:\models\research\object_detection> python xml_to_csv.py
 ```
 This creates a train_labels.csv and test_labels.csv file in the \object_detection\images folder. 
 
 Next, open the generate_tfrecord.py file in a text editor. Replace the label map starting at line 31 with your own label map, where each object is assigned an ID number. This same number assignment will be used when configuring the labelmap.pbtxt file in Step 5b. 
 
-For example, say you are training a classifier to detect basketballs, shirts, and shoes. You will replace the following code in generate_tfrecord.py:
+For example, say you are training a classifier to detect basketballs, shirts, and shoes. You will replace the following code in generate_tensorflow_data.py:
 ```
 # TO-DO replace this with label map
 def class_text_to_int(row_label):
-    if row_label == 'nine':
+    if row_label == "Armyworms":
         return 1
-    elif row_label == 'ten':
+    if row_label == "Brown_plant_leafhopper":
         return 2
-    elif row_label == 'jack':
+    if row_label == "Gall_midge":
         return 3
-    elif row_label == 'queen':
+    if row_label == "Grasshopper":
         return 4
-    elif row_label == 'king':
+    if row_label == "Leaf_folder":
         return 5
-    elif row_label == 'ace':
+    if row_label == "Mealy_bug":
         return 6
+    if row_label == "Paddy_stemborer":
+        return 7
+    if row_label == "Rice_case_worm":
+        return 8
+    if row_label == "Rice_earhead_bug":
+        return 9
+    if row_label == "Rice_horned_caterpillar":
+        return 10
+    if row_label == "Rice_skipper":
+        return 11
+    if row_label == "Spiny_beetle":
+        return 12
+    if row_label == "Thrips":
+        return 13
+    if row_label == "White_backed_plant_hopper":
+        return 14
+    if row_label == "Whorl_maggot":
+        return 15
+    if row_label == "Weed":
+        return 16
     else:
         return None
 ```
@@ -224,18 +250,24 @@ With this:
 ```
 # TO-DO replace this with label map
 def class_text_to_int(row_label):
-    if row_label == 'basketball':
+    if row_label == "basketball":
         return 1
-    elif row_label == 'shirt':
+    elif row_label == "shirt":
         return 2
-    elif row_label == 'shoe':
+    elif row_label == "shoe":
         return 3
     else:
         return None
 ```
 Then, generate the TFRecord files by issuing these commands from the \object_detection folder:
+
+To generate train record issue these commands :
 ```
 python generate_tfrecord.py --csv_input=images\train_labels.csv --image_dir=images\train --output_path=train.record
+```
+
+To generate test record issue these commands :
+```
 python generate_tfrecord.py --csv_input=images\test_labels.csv --image_dir=images\test --output_path=test.record
 ```
 These generate a train.record and a test.record file in \object_detection. These will be used to train the new object detection classifier.
