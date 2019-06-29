@@ -92,10 +92,10 @@ A PYTHONPATH variable must be created that points to the \models, \models\resear
 #### 2f. Compile Protobufs and run setup.py
 
 
-Finally, run the following commands from the C:\tensorflow1\models\research directory:
+Finally, run the following commands from the C:\models\research directory:
 ```
-(tensorflow1) C:\tensorflow1\models\research> python setup.py build
-(tensorflow1) C:\tensorflow1\models\research> python setup.py install
+(tensorflow1) C:\models\research> python setup.py build
+(tensorflow1) C:\models\research> python setup.py install
 ```
 
 #### 2g. Test TensorFlow setup to verify it works
