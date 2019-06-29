@@ -1,4 +1,4 @@
-# Rice Crop Insects And Weed Detection Using Faster R-CNN
+# Rice Crop Insects And Weed Detection And Classification Using Faster R-CNN
 
 
 
