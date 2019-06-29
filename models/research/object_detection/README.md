@@ -24,7 +24,7 @@ It also has Python scripts to test your classifier out on an image, video, or we
 TensorFlow-GPU allows your PC to use the video card to provide extra processing power while training, so it will be used for this project. In my experience, using TensorFlow-GPU instead of regular TensorFlow reduces training time by a factor of about 8 (3 hours to train instead of 24 hours). Regular TensorFlow can also be used for this project, but it will take longer. If you use regular TensorFlow, you do not need to install CUDA and cuDNN in Step 1. I used TensorFlow-GPU v1.5 while doing this project, but it will likely work for future versions of TensorFlow.
 
 
-# To Use This Implemented Project by Doing these Steps :
+# Use This Implemented Project by Doing these Steps :
 
 ### 1. Install TensorFlow-GPU 1.5 (skip this step if TensorFlow-GPU 1.5 is already installed)
 Install TensorFlow-GPU by following the instructions in [this YouTube Video by Mark Jay](https://www.youtube.com/watch?v=RplXYjxgZbw).
@@ -133,7 +133,7 @@ To use video detection and classification feature, issue this command :
 ```
 (tensorflow) C:\models\research\object_detection> jupyter notebook video_detection.ipynb
 ```
-To use webcm detection and classification feature, issue this command :
+To use webcam detection and classification feature, issue this command :
 ```
 (tensorflow) C:\models\research\object_detection> jupyter notebook camera_detection.ipynb
 ```
@@ -146,7 +146,7 @@ Now that the TensorFlow Object Detection API is all set up and ready to go, we n
 #### 3a. Gather Pictures
 TensorFlow needs hundreds of images of an object to train a good detection classifier. To train a robust classifier, the training images should have random objects in the image along with the desired objects, and should have a variety of backgrounds and lighting conditions. There should be some images where the desired object is partially obscured, overlapped with something else, or only halfway in the picture. 
 
-For my Pinochle Card Detection classifier, I have six different objects I want to detect (the card ranks nine, ten, jack, queen, king, and ace – I am not trying to detect suit, just rank). I used my iPhone to take about 40 pictures of each card on its own, with various other non-desired objects in the pictures. Then, I took about another 100 pictures with multiple cards in the picture. I know I want to be able to detect the cards when they’re overlapping, so I made sure to have the cards be overlapped in many images.
+For this thesis project, We have taken fifteen(15) different type of rice crop insects species according to given refernce [link](http://www.knowledgebank.irri.org/step-by-step-production/growth/pests-and-diseases/insects) objects We want to detect ( Armyworms, Brown Plant Leafhopper, Gall Midge, Grasshopper, Leaf Folder, Mealy Bug, Paddy Stemborer, Rice Case Worm, Rice Earhead Bug, Rice Horned Caterpillar, Rice Skipper, Spiny Beetle, Thrips, White Backed Plant Hopper, Whorl Maggot. – I am not only trying to detect and also i am classfying objects). I have taken about 32-85 pictures of each rice insects species From different websites and Google Image Search, with various other non-desired objects in the pictures. And Also, We have taken 224 rice crop weed images from the following  [link](https://figshare.com/articles/rice_seedlings_and_weeds/7488830). Then, We have taken about another 100 pictures with multiple objects in the picture. I know I want to be able to detect the cards when they’re overlapping, so I made sure to have the cards be overlapped in many images.
 
 <p align="center">
   <img src="doc/collage.jpg">
