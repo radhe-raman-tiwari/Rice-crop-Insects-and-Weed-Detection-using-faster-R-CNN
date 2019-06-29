@@ -18,9 +18,14 @@ As the increase in the world population the demand of the rice is also increases
 In order to excess project people need to go insize models directory in which we will find some short of directory from them we need to find research directory and then we need to find object detection directory and after that  all these hierarchical directories we need to flow the instruction given on that page README.md. Again, i am showing steps here which we need to flow them in order to use/excess this project source code.
 
 Step 1 : Open models directory
+
 Step 2 : Open research directory
+
 Step 3 : Open object_detection directory
+
 Step 4 : Flow the steps given on that page README.md
 
+
 Thank a lot and Regards
+
 Radhe Raman Tiwari
