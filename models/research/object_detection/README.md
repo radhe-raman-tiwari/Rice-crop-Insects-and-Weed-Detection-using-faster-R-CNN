@@ -427,7 +427,7 @@ You can view the progress of the training job by using TensorBoard. To do this, 
 This will create a webpage on your local machine at YourPCName:6006, which can be viewed through a web browser. The TensorBoard page provides information and graphs that show how the training is progressing. One important graph is the Loss graph, which shows the overall loss of the classifier over time.
 
 <p align="center">
-  <img src="test_images/image_122.jpg">
+  <img src="result/image_122.jpg">
 </p>
 
 The training routine periodically saves checkpoints about every five minutes. You can terminate the training by pressing Ctrl+C while in the command prompt window. I typically wait until just after a checkpoint has been saved to terminate the training. You can terminate training and start it later, and it will restart from the last saved checkpoint. The checkpoint at the highest number of steps will be used to generate the frozen inference graph.
@@ -452,5 +452,13 @@ If everything is working properly, the object detector will initialize for about
 
 <p align="center">
   <img src="result/40.jpg">
+</p>
+
+<p align="center">
+  <img src="result/31.jpg">
+</p>
+
+<p align="center">
+  <img src="result/image_124.jpg">
 </p>
 
