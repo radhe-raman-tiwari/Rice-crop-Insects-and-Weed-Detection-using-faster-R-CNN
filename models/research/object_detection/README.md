@@ -2,7 +2,7 @@
 
 
 
-This readme describes every step required to get going with your own object detection classifier: 
+This readme describes every step required to get going with this project detection and classification : 
 1. [Installing TensorFlow-GPU](https://github.com/radhe-raman-tiwari/Rice-crop-Insects-and-Weed-Detection-using-faster-R-CNN/tree/master/models/research/object_detection#1-install-tensorflow-gpu-15-skip-this-step-if-tensorflow-gpu-15-is-already-installed)
 2. [Create Anaconda Virtual Environment and Run The Project](https://github.com/radhe-raman-tiwari/Rice-crop-Insects-and-Weed-Detection-using-faster-R-CNN/tree/master/models/research/object_detection#2-set-up-tensorflow-directory-and-anaconda-virtual-environment)
 3. [Gathering and labeling pictures](https://github.com/radhe-raman-tiwari/Rice-crop-Insects-and-Weed-Detection-using-faster-R-CNN/tree/master/models/research/object_detection#3-gather-and-label-pictures)
