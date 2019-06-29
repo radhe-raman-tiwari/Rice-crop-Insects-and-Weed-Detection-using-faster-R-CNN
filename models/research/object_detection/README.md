@@ -1,9 +1,10 @@
-# How To Train an Object Detection Classifier for Multiple Objects Using TensorFlow (GPU) on Windows 10
+# Rice Crop Insects And Weed Detection Using Faster R-CNN
+
 
 
 This readme describes every step required to get going with your own object detection classifier: 
 1. [Installing TensorFlow-GPU](https://github.com/radhe-raman-tiwari/Rice-crop-Insects-and-Weed-Detection-using-faster-R-CNN/tree/master/models/research/object_detection#1-install-tensorflow-gpu-15-skip-this-step-if-tensorflow-gpu-15-is-already-installed)
-2. [Setting up the Object Detection directory structure and Anaconda Virtual Environment](https://github.com/radhe-raman-tiwari/Rice-crop-Insects-and-Weed-Detection-using-faster-R-CNN/tree/master/models/research/object_detection#2-set-up-tensorflow-directory-and-anaconda-virtual-environment)
+2. [Create Anaconda Virtual Environment and Run The Project](https://github.com/radhe-raman-tiwari/Rice-crop-Insects-and-Weed-Detection-using-faster-R-CNN/tree/master/models/research/object_detection#2-set-up-tensorflow-directory-and-anaconda-virtual-environment)
 3. [Gathering and labeling pictures](https://github.com/radhe-raman-tiwari/Rice-crop-Insects-and-Weed-Detection-using-faster-R-CNN/tree/master/models/research/object_detection#3-gather-and-label-pictures)
 4. [Generating training data](https://github.com/radhe-raman-tiwari/Rice-crop-Insects-and-Weed-Detection-using-faster-R-CNN/tree/master/models/research/object_detection#4-generate-training-data)
 5. [Creating a label map and configuring training](https://github.com/radhe-raman-tiwari/Rice-crop-Insects-and-Weed-Detection-using-faster-R-CNN/tree/master/models/research/object_detection#5-create-label-map-and-configure-training)
