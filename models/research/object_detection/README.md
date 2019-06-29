@@ -114,7 +114,7 @@ The TensorFlow Object Detection API is now all set up to use this project train 
 This opens the script in your default web browser and allows you to step through the code one section at a time. You can step through each section by clicking the “Run” button in the upper toolbar. The section is done running when the “In [ * ]” text next to the section populates with a number (e.g. “In [1]”). 
 
 
-Once you have stepped all the way through the script, you should see two labeled images at the bottom section the page. If you see this, then everything is working properly
+Once you have stepped all the way through the script, you should see real image at left and their output image at right with label at the bottom section the page. If you see this, then everything is working properly
 
 <p align="center">
   <img src="result/image_118.jpg">
