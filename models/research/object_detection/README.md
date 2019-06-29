@@ -107,18 +107,17 @@ Finally, run the following commands from the C:\models\research directory:
 ```
 
 #### 2d. Test TensorFlow setup to verify it works
-The TensorFlow Object Detection API is now all set up to use pre-trained models for object detection, or to train a new one. You can test it out and verify your installation is working by launching the object_detection_tutorial.ipynb script with Jupyter. From the \object_detection directory, issue this command:
+The TensorFlow Object Detection API is now all set up to use this project train models for object detection, or to train a new one. You can test it out and verify your installation is working by launching the image_detection.ipynb script with Jupyter. From the \object_detection directory, issue this command:
 ```
 (tensorflow) C:\models\research\object_detection> jupyter notebook image_detection.ipynb
 ```
 This opens the script in your default web browser and allows you to step through the code one section at a time. You can step through each section by clicking the “Run” button in the upper toolbar. The section is done running when the “In [ * ]” text next to the section populates with a number (e.g. “In [1]”). 
 
-(Note: part of the script downloads the ssd_mobilenet_v1 model from GitHub, which is about 74MB. This means it will take some time to complete the section, so be patient.)
 
-Once you have stepped all the way through the script, you should see two labeled images at the bottom section the page. If you see this, then everything is working properly! If not, the bottom section will report any errors encountered. See the [Appendix](https://github.com/EdjeElectronics/TensorFlow-Object-Detection-API-Tutorial-Train-Multiple-Objects-Windows-10#appendix-common-errors) for a list of errors I encountered while setting this up.
+Once you have stepped all the way through the script, you should see two labeled images at the bottom section the page. If you see this, then everything is working properly
 
 <p align="center">
-  <img src="doc/jupyter_notebook_dogs.jpg">
+  <img src="result/image_118.jpg">
 </p>
 
 ### 3. Gather and Label Pictures
