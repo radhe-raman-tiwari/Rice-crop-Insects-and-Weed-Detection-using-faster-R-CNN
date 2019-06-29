@@ -59,7 +59,7 @@ Next, we'll work on setting up a virtual environment in Anaconda for tensorflow-
 
 In the command terminal that pops up, create a new virtual environment called “tensorflow” by issuing the following command:
 ```
-C:\> conda create -n tensorflow pip python=3.5
+C:\> conda create -n tensorflow pip python=3.7
 ```
 Then, activate the environment by issuing:
 ```
@@ -86,6 +86,14 @@ Install the other necessary packages by issuing the following commands:
 A PYTHONPATH variable must be created that points to the \models, \models\research, and \models\research\slim directories. Do this by issuing the following commands (from any directory):
 ```
 (tensorflow) C:\> set PYTHONPATH=C:\models;C:models\research;C:\models\research\slim
+```
+Then, activate the path by issuing:
+```
+(tensorflow) C:\> set PATH=%PATH%;PYTHONPATH
+```
+If you want to see the path just by issuing:
+```
+(tensorflow) C:\> echo %PYTHONPATH%
 ```
 (Note: Every time the "tensorflow" virtual environment is exited, the PYTHONPATH variable is reset and needs to be set up again.)
 
