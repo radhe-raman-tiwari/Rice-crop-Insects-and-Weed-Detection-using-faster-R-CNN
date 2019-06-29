@@ -184,7 +184,7 @@ Here comes the fun part! With all the pictures gathered, it’s time to label th
 Download and install LabelImg, point it to your \images\train directory, and then draw a box around each object in each image. Repeat the process for all the images in the \images\test directory. This will take a while! 
 
 <p align="center">
-  <img src="doc/labels.jpg">
+  <img src="test_images/Screenshot (305).png">
 </p>
 
 LabelImg saves a .xml file containing the label data for each image. These .xml files will be used to generate TFRecords, which are one of the inputs to the TensorFlow trainer. Once you have labeled and saved each image, there will be one .xml file for each image in the \test and \train directories.
@@ -276,36 +276,87 @@ These generate a train.record and a test.record file in \object_detection. These
 The last thing to do before training is to create a label map and edit the training configuration file.
 
 #### 5a. Label map
-The label map tells the trainer what each object is by defining a mapping of class names to class ID numbers. Use a text editor to create a new file and save it as labelmap.pbtxt in the C:\tensorflow1\models\research\object_detection\training folder. (Make sure the file type is .pbtxt, not .txt !) In the text editor, copy or type in the label map in the format below (the example below is the label map for my Pinochle Deck Card Detector):
+The label map tells the trainer what each object is by defining a mapping of class names to class ID numbers. Use a text editor to create a new file and save it as labelmap.pbtxt in the C:\models\research\object_detection\training folder. (Make sure the file type is .pbtxt, not .txt !) In the text editor, copy or type in the label map in the format below (the example below is the label map for this thesis project):
 ```
+
 item {
-  id: 1
-  name: 'nine'
+    id: 1
+    name: 'Armyworms'
 }
 
 item {
-  id: 2
-  name: 'ten'
+    id: 2
+    name: 'Brown_plant_leafhopper'
 }
 
 item {
-  id: 3
-  name: 'jack'
+    id: 3
+    name: 'Gall_midge'
 }
 
 item {
-  id: 4
-  name: 'queen'
+    id: 4
+    name: 'Grasshopper'
 }
 
 item {
-  id: 5
-  name: 'king'
+    id: 5
+    name: 'Leaf_folder'
 }
 
 item {
-  id: 6
-  name: 'ace'
+    id: 6
+    name: 'Mealy_bug'
+}
+
+item {
+    id: 7
+    name: 'Paddy_stemborer'
+}
+
+item {
+    id: 8
+    name: 'Rice_case_worm'
+}
+
+item {
+    id: 9
+    name: 'Rice_earhead_bug'
+}
+
+item {
+    id: 10
+    name: 'Rice_horned_caterpillar'
+}
+
+item {
+    id: 11
+    name: 'Rice_skipper'
+}
+
+item {
+    id: 12
+    name: 'Spiny_beetle'
+}
+
+item {
+    id: 13
+    name: 'Thrips'
+}
+
+item {
+    id: 14
+    name: 'White_backed_plant_hopper'
+}
+
+item {
+    id: 15
+    name: 'Whorl_maggot'
+}
+
+item {
+    id: 16
+    name: 'Weed'
 }
 ```
 The label map ID numbers should be the same as what is defined in the generate_tfrecord.py file. For the basketball, shirt, and shoe detector example mentioned in Step 4, the labelmap.pbtxt file will look like:
@@ -329,50 +380,54 @@ item {
 #### 5b. Configure training
 Finally, the object detection training pipeline must be configured. It defines which model and what parameters will be used for training. This is the last step before running training!
 
-Navigate to C:\tensorflow1\models\research\object_detection\samples\configs and copy the faster_rcnn_inception_v2_pets.config file into the \object_detection\training directory. Then, open the file with a text editor. There are several changes to make to the .config file, mainly changing the number of classes and examples, and adding the file paths to the training data.
+Navigate to C:\models\research\object_detection\samples\configs and copy the faster_rcnn_inception_v2_pets.config file into the \object_detection\training directory. Then, open the file with a text editor. There are several changes to make to the .config file, mainly changing the number of classes and examples, and adding the file paths to the training data.
 
 Make the following changes to the faster_rcnn_inception_v2_pets.config file. Note: The paths must be entered with single forward slashes (NOT backslashes), or TensorFlow will give a file path error when trying to train the model! Also, the paths must be in double quotation marks ( " ), not single quotation marks ( ' ).
 
 - Line 9. Change num_classes to the number of different objects you want the classifier to detect. For the above basketball, shirt, and shoe detector, it would be num_classes : 3 .
 - Line 110. Change fine_tune_checkpoint to:
-  - fine_tune_checkpoint : "C:/tensorflow1/models/research/object_detection/faster_rcnn_inception_v2_coco_2018_01_28/model.ckpt"
+  - fine_tune_checkpoint : "C:/models/research/object_detection/faster_rcnn_inception_v2_coco_2018_01_28/model.ckpt"
 
 - Lines 126 and 128. In the train_input_reader section, change input_path and label_map_path to:
-  - input_path : "C:/tensorflow1/models/research/object_detection/train.record"
-  - label_map_path: "C:/tensorflow1/models/research/object_detection/training/labelmap.pbtxt"
+  - input_path : "C:/models/research/object_detection/train.record"
+  - label_map_path: "C:/models/research/object_detection/training/labelmap.pbtxt"
 
 - Line 132. Change num_examples to the number of images you have in the \images\test directory.
 
 - Lines 140 and 142. In the eval_input_reader section, change input_path and label_map_path to:
-  - input_path : "C:/tensorflow1/models/research/object_detection/test.record"
-  - label_map_path: "C:/tensorflow1/models/research/object_detection/training/labelmap.pbtxt"
+  - input_path : "C:/models/research/object_detection/test.record"
+  - label_map_path: "C:/models/research/object_detection/training/labelmap.pbtxt"
 
 Save the file after the changes have been made. That’s it! The training job is all configured and ready to go!
 
 ### 6. Run the Training
-**UPDATE 9/26/18:** 
-*As of version 1.9, TensorFlow has deprecated the "train.py" file and replaced it with "model_main.py" file. I haven't been able to get model_main.py to work correctly yet (I run in to errors related to pycocotools). Fortunately, the train.py file is still available in the /object_detection/legacy folder. Simply move train.py from /object_detection/legacy into the /object_detection folder and then continue following the steps below.*
+**UPDATE 6/30/19:** 
+*As of version 2.0, TensorFlow has deprecated the "train.py" file and replaced it with "model_main.py" file. I haven't been able to get model_main.py to work correctly yet (I run in to errors related to pycocotools). Fortunately, the train.py file is still available in the /object_detection/legacy folder. Simply move train.py from /object_detection/legacy into the /object_detection folder and then continue following the steps below.*
 
 Here we go! From the \object_detection directory, issue the following command to begin training:
 ```
 python train.py --logtostderr --train_dir=training/ --pipeline_config_path=training/faster_rcnn_inception_v2_pets.config
 ```
-If everything has been set up correctly, TensorFlow will initialize the training. The initialization can take up to 30 seconds before the actual training begins. When training begins, it will look like this:
+OR, Issue the following command to begin training:
+```
+python model_main.py --logtostderr --train_dir=training/ --pipeline_config_path=training/faster_rcnn_inception_v2_pets.config
+```
+If everything has been set up correctly, TensorFlow will initialize the training. The initialization can take up to 1500 seconds before the actual training begins. When training begins, it will look like this:
 
 <p align="center">
-  <img src="doc/training.jpg">
+  <img src="test_images/Screenshot (306).png">
 </p>
 
-Each step of training reports the loss. It will start high and get lower and lower as training progresses. For my training on the Faster-RCNN-Inception-V2 model, it started at about 3.0 and quickly dropped below 0.8. I recommend allowing your model to train until the loss consistently drops below 0.05, which will take about 40,000 steps, or about 2 hours (depending on how powerful your CPU and GPU are). Note: The loss numbers will be different if a different model is used. MobileNet-SSD starts with a loss of about 20, and should be trained until the loss is consistently under 2.
+Each step of training reports the loss. It will start high and get lower and lower as training progresses. For my training on the Faster-RCNN-Inception-V2 model, it started at about 5.4 and quickly dropped below 0.8. I recommend allowing your model to train until the loss consistently drops below 0.05, which will take about 70,000 steps, or about 16-20 hours (depending on how powerful your CPU and GPU are). Note: The loss numbers will be different if a different model is used. MobileNet-SSD starts with a loss of about 20, and should be trained until the loss is consistently under 2.
 
-You can view the progress of the training job by using TensorBoard. To do this, open a new instance of Anaconda Prompt, activate the tensorflow1 virtual environment, change to the C:\tensorflow1\models\research\object_detection directory, and issue the following command:
+You can view the progress of the training job by using TensorBoard. To do this, open a new instance of Anaconda Prompt, activate the tensorflow1 virtual environment, change to the C:\models\research\object_detection directory, and issue the following command:
 ```
-(tensorflow1) C:\tensorflow1\models\research\object_detection>tensorboard --logdir=training
+(tensorflow) C:\models\research\object_detection>tensorboard --logdir=training
 ```
 This will create a webpage on your local machine at YourPCName:6006, which can be viewed through a web browser. The TensorBoard page provides information and graphs that show how the training is progressing. One important graph is the Loss graph, which shows the overall loss of the classifier over time.
 
 <p align="center">
-  <img src="doc/loss_graph.JPG">
+  <img src="test_images/image_122.jpg">
 </p>
 
 The training routine periodically saves checkpoints about every five minutes. You can terminate the training by pressing Ctrl+C while in the command prompt window. I typically wait until just after a checkpoint has been saved to terminate the training. You can terminate training and start it later, and it will restart from the last saved checkpoint. The checkpoint at the highest number of steps will be used to generate the frozen inference graph.
@@ -387,15 +442,15 @@ This creates a frozen_inference_graph.pb file in the \object_detection\inference
 ### 8. Use Your Newly Trained Object Detection Classifier!
 The object detection classifier is all ready to go! I’ve written Python scripts to test it out on an image, video, or webcam feed.
 
-Before running the Python scripts, you need to modify the NUM_CLASSES variable in the script to equal the number of classes you want to detect. (For my Pinochle Card Detector, there are six cards I want to detect, so NUM_CLASSES = 6.)
+Before running the Python scripts, you need to modify the NUM_CLASSES variable in the script to equal the number of classes you want to detect. (For this thesis project, there are fifteen insects species and rice crop weed I want to detect, so NUM_CLASSES = 16.)
 
-To test your object detector, move a picture of the object or objects into the \object_detection folder, and change the IMAGE_NAME variable in the Object_detection_image.py to match the file name of the picture. Alternatively, you can use a video of the objects (using Object_detection_video.py), or just plug in a USB webcam and point it at the objects (using Object_detection_webcam.py).
+To test your object detector, move a picture of the object or objects into the \object_detection folder, and change the IMAGE_NAME variable in the image_detection.ipynb to match the file name of the picture. Alternatively, you can use a video of the objects (using video_detection.ipynb), or just plug in a USB webcam and point it at the objects (using camera_detection.ipynb).
 
-To run any of the scripts, type “idle” in the Anaconda Command Prompt (with the “tensorflow1” virtual environment activated) and press ENTER. This will open IDLE, and from there, you can open any of the scripts and run them.
+To run any of the scripts, type “jupyter notebook” in the Anaconda Command Prompt (with the “tensorflow1” virtual environment activated) and press ENTER. This will open Jupyter Notebook in youe default browser, and from there, you can open any of the scripts and run them.
 
-If everything is working properly, the object detector will initialize for about 10 seconds and then display a window showing any objects it’s detected in the image!
+If everything is working properly, the object detector will initialize for about 30 seconds and then display a window showing any objects it’s detected in the image!
 
 <p align="center">
-  <img src="doc/detector2.jpg">
+  <img src="result/40.jpg">
 </p>
 
