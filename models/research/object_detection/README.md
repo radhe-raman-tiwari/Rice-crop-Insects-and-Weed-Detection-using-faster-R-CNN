@@ -24,7 +24,8 @@ It also has Python scripts to test your classifier out on an image, video, or we
 TensorFlow-GPU allows your PC to use the video card to provide extra processing power while training, so it will be used for this project. In my experience, using TensorFlow-GPU instead of regular TensorFlow reduces training time by a factor of about 8 (3 hours to train instead of 24 hours). Regular TensorFlow can also be used for this project, but it will take longer. If you use regular TensorFlow, you do not need to install CUDA and cuDNN in Step 1. I used TensorFlow-GPU v1.5 while doing this project, but it will likely work for future versions of TensorFlow.
 
 
-## Steps
+# To Use This Implemented Project by Doing these Steps :
+
 ### 1. Install TensorFlow-GPU 1.5 (skip this step if TensorFlow-GPU 1.5 is already installed)
 Install TensorFlow-GPU by following the instructions in [this YouTube Video by Mark Jay](https://www.youtube.com/watch?v=RplXYjxgZbw).
 
@@ -121,7 +122,7 @@ Once you have stepped all the way through the script, you should see real image 
 </p>
 
 
-#### 2e. Use of all the features of this project
+#### 2e. Use of All The Features of This Project
 To use all features of this project, which is rice crop insect image detection and classification, video detection and classification and webcam detection and classification, we need to follow following steps From the \object_detection directory.
 
 To use image detection and classification feature, issue this command :
@@ -137,7 +138,7 @@ To use webcm detection and classification feature, issue this command :
 (tensorflow) C:\models\research\object_detection> jupyter notebook camera_detection.ipynb
 ```
 
-# Train Your Own Model by doing these steps :
+# Train Your Own Model by doing these Steps :
 
 ### 3. Gather and Label Pictures
 Now that the TensorFlow Object Detection API is all set up and ready to go, we need to provide the images it will use to train a new detection classifier.
