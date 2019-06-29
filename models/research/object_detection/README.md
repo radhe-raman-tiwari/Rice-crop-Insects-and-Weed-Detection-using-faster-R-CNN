@@ -146,15 +146,26 @@ Now that the TensorFlow Object Detection API is all set up and ready to go, we n
 #### 3a. Gather Pictures
 TensorFlow needs hundreds of images of an object to train a good detection classifier. To train a robust classifier, the training images should have random objects in the image along with the desired objects, and should have a variety of backgrounds and lighting conditions. There should be some images where the desired object is partially obscured, overlapped with something else, or only halfway in the picture. 
 
-For this thesis project, We have taken fifteen(15) different type of rice crop insects species according to given refernce [link](http://www.knowledgebank.irri.org/step-by-step-production/growth/pests-and-diseases/insects) objects We want to detect ( Armyworms, Brown Plant Leafhopper, Gall Midge, Grasshopper, Leaf Folder, Mealy Bug, Paddy Stemborer, Rice Case Worm, Rice Earhead Bug, Rice Horned Caterpillar, Rice Skipper, Spiny Beetle, Thrips, White Backed Plant Hopper, Whorl Maggot. – I am not only trying to detect and also i am classfying objects). I have taken about 32-85 pictures of each rice insects species From different websites and Google Image Search, with various other non-desired objects in the pictures. And Also, We have taken 224 rice crop weed images from the following  [link](https://figshare.com/articles/rice_seedlings_and_weeds/7488830). Then, We have taken about another 100 pictures with multiple objects in the picture. I know I want to be able to detect the cards when they’re overlapping, so I made sure to have the cards be overlapped in many images.
+For this thesis project, We have taken fifteen(15) different type of rice crop insects species according to given refernce [instructions link](http://www.knowledgebank.irri.org/step-by-step-production/growth/pests-and-diseases/insects) objects We want to detect ( Armyworms, Brown Plant Leafhopper, Gall Midge, Grasshopper, Leaf Folder, Mealy Bug, Paddy Stemborer, Rice Case Worm, Rice Earhead Bug, Rice Horned Caterpillar, Rice Skipper, Spiny Beetle, Thrips, White Backed Plant Hopper, Whorl Maggot. – I am not only trying to detect and also i am classfying objects). I have taken about 32-85 pictures of each rice insects species From different websites and Google Image Search, with various other non-desired objects in the pictures. And Also, We have taken 224 rice crop weed images from the following  [Weed Data-set link](https://figshare.com/articles/rice_seedlings_and_weeds/7488830). Then, We have taken about another 100 pictures with multiple objects in the picture.
 
 <p align="center">
-  <img src="doc/collage.jpg">
+  <img src="images/train/image_1.jpg">
 </p>
 
-You can use your phone to take pictures of the objects or download images of the objects from Google Image Search. I recommend having at least 200 pictures overall. I used 311 pictures to train my card detector.
+<p align="center">
+  <img src="images/train/image_110.jpg">
+</p>
 
-Make sure the images aren’t too large. They should be less than 200KB each, and their resolution shouldn’t be more than 720x1280. The larger the images are, the longer it will take to train the classifier. You can use the resizer.py script in this repository to reduce the size of the images.
+<p align="center">
+  <img src="test_images/142.jpg">
+</p>
+
+<p align="center">
+  <img src="test_images/27.jpg">
+</p>
+
+
+Make sure the images aren’t too large. They should be less than 200KB each, and their resolution shouldn’t be more than 800x600. The larger the images are, the longer it will take to train the classifier. You can use the transfer_image_resolution.py script in this repository to reduce the size of the images or reshape the images.
 
 After you have all the pictures you need, move 20% of them to the \object_detection\images\test directory, and 80% of them to the \object_detection\images\train directory. Make sure there are a variety of pictures in both the \test and \train directories.
 
