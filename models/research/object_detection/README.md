@@ -122,7 +122,8 @@ Once you have stepped all the way through the script, you should see real image 
 
 
 #### 2e. Use of all the features of this project
-To use all features of this project, which is rice crop insect image detection and classification video detection and classification and webcam detection and classification, we need to follow following steps From the \object_detection directory.
+To use all features of this project, which is rice crop insect image detection and classification, video detection and classification and webcam detection and classification, we need to follow following steps From the \object_detection directory.
+
 To use image detection and classification feature, issue this command :
 ```
 (tensorflow) C:\models\research\object_detection> jupyter notebook image_detection.ipynb
